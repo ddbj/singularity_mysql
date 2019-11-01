@@ -59,8 +59,7 @@ rootユーザーのパスワードの設定等を行います。
 例えばat043でsingularity instanceを起動した場合
 
     $ singularity exec instance://インスタンス名 mysql -uroot -p
-    mysql> grant all privileges on new_database.* to 'new_user'@'localhost' identified by 'new_password';
-    mysql> grant all privileges on new_database.* to 'new_user'@'at043' identified by 'new_password';
+    mysql> grant all privileges on new_database.* to 'new_user'@'%' identified by 'new_password';
     mysql> exit
     > exit
 
@@ -72,7 +71,7 @@ rootユーザーのパスワードの設定等を行います。
     Enter password: 
     ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)
 
-socketがないのでlocalhostにはアクセスできない。-hオプションでsingularity instanceを起動したホスト名を指定する。
+socketがないのでlocalhostではアクセスできない。-hオプションでsingularity instanceを起動したホスト名を指定する。
 
     $ mysql -h at043 -P <指定したポート番号> -u new_user -p
     Enter password:
