@@ -8,7 +8,7 @@
 
     $ git clone https://github.com/ddbj/singularity_mysql.git
     $ cd singularity_mysql
-    $ sudo singularity build ubuntu-18.04-mysql-5.6.46.simg Singularity
+    $ sudo singularity build ubuntu-18.04-mysql-5.6.46.simg Singularity.5.6
 
 ## imageのダウンロード
 
