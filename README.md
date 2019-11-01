@@ -30,7 +30,7 @@ singularity instanceを起動し、データベースの初期化・mysqlのroot
 - INSTANCE: 起動するsingularity instanceの名前を記載します。すでに実行されているinstanceの名前では新規にinstanceを起動できないので、適宜修正してください。
 - port: mysqlが使用するポートを記載してください。デフォルトのポート番号は3306ですが、他と被らないように50000以上の任意の数値を指定してください。
 
-### インスタンスの起動・データベースの初期化
+### singularitry instanceの起動・データベースの初期化
 
     $ bash start_container.sh
     $ singularity shell instance://インスタンス名
@@ -41,7 +41,7 @@ singularity instanceを起動し、データベースの初期化・mysqlのroot
 
 この操作で mysql_data ディレクトリが生成され、この中にMySQLデータベースが生成されます。
 
-### インスタンスの再起動・mysqlのrootユーザーのパスワード設定等
+### singularitry instanceの再起動・mysqlのrootユーザーのパスワード設定等
 
     $ singularity instance.stop インスタンス名
     $ bash start_container.sh
@@ -54,5 +54,34 @@ rootユーザーのパスワードの設定等を行います。
 
 ## MySQLデータベースの使用
 
-mysqlコマンドを使用する場合は、singularity shell でinstance内に入るか、singularity exec で mysqlコマンドを実行します。
-実行しているMySQL instanceのデータベースにアクセスする場合は、localhostのport で指定したポート番号にアクセスしてください。
+### データベース・ユーザーの作成
+
+例えばat043でsingularity instanceを起動した場合
+
+    $ singularity exec instance://インスタンス名 mysql -uroot -p
+    mysql> grant all privileges on new_database.* to 'new_user'@'localhost' identified by 'new_password';
+    mysql> grant all privileges on new_database.* to 'new_user'@'at043' identified by 'new_password';
+    mysql> exit
+    > exit
+
+### singularitry instance内のMySQLデータベースへのアクセス
+
+スパコン上のmysqlコマンドを使ってsingularity instance内のMySQLデータベースにアクセスする場合
+
+    $ mysql -P <指定したポート番号> -u new_user -p
+    Enter password: 
+    ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)
+
+socketがないのでlocalhostにはアクセスできない。-hオプションでsingularity instanceを起動したホスト名を指定する。
+
+    $ mysql -h at043 -P <指定したポート番号> -u new_user -p
+    Enter password:
+    Welcome to the MariaDB monitor.  Commands end with ; or \g.
+    Your MySQL connection id is 18
+    Server version: 5.6.46 Source distribution
+    
+    Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+    
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+    
+    MySQL [(none)]>
