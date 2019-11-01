@@ -7,7 +7,7 @@ default-character-set = utf8
 
 [mysqld]
 port = 52004
-bind-address = 127.0.0.1
+bind-address = 0.0.0.0
 #skip-networking
 pid-file = /usr/local/mysql/data/my_mysql.pid
 socket = /usr/local/mysql/data/my_mysql.sock
