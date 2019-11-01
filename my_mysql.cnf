@@ -1,0 +1,18 @@
+[client]
+port = 52004
+socket = /usr/local/mysql/data/my_mysql.sock
+
+[mysql]
+default-character-set = utf8
+
+[mysqld]
+port = 52004
+bind-address = 127.0.0.1
+#skip-networking
+pid-file = /usr/local/mysql/data/my_mysql.pid
+socket = /usr/local/mysql/data/my_mysql.sock
+datadir = /usr/local/mysql/data/
+skip-character-set-client-handshake
+character-set-server = utf8
+collation-server = utf8_general_ci
+sql_mode = NO_ENGINE_SUBSTITUTION
