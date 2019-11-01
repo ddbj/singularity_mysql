@@ -81,10 +81,12 @@ socketがないのでlocalhostではアクセスできません。-hオプショ
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
     
     MySQL [(none)]> exit
+    Bye
 
 別ホストからもアクセスできます。
 
     $ ssh at044
+    Last login: Fri Nov  1 15:57:04 2019 from gw1
     $ mysql -h at043 -P <指定したポート番号> -u new_user -p
     Enter password:
     Welcome to the MariaDB monitor.  Commands end with ; or \g.
@@ -96,4 +98,5 @@ socketがないのでlocalhostではアクセスできません。-hオプショ
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
     
     MySQL [(none)]> exit
+    Bye
     
