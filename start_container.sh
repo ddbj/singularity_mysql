@@ -4,6 +4,10 @@ CONTAINER_HOME="/home/okuda/singularity/ubuntu-18.04-mysql-5.6"
 IMAGE="ubuntu-18.04-mysql-5.6.46.simg"
 INSTANCE="mysql"
 
+if [ ! -e ${CONTAINER_HOME}/mysql_data ]; then
+    mkdir ${CONTAINER_HOME}/mysql_data
+fi
+
 singularity instance.start \
 -B ${CONTAINER_HOME}/mysql_data:/usr/local/mysql/data \
 -B ${CONTAINER_HOME}/my_mysql.cnf:/usr/local/mysql/my_mysql.cnf \
