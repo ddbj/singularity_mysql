@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONTAINER_HOME="/home/okuda/singularity/ubuntu-18.04-mysql-5.6"
+CONTAINER_HOME="/home/user/singularity_mysql"
 IMAGE="ubuntu-18.04-mysql-5.6.46.simg"
 INSTANCE="mysql"
 
