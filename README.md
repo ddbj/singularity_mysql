@@ -45,9 +45,7 @@ singularity instanceを起動し、データベースの初期化・mysqlのroot
 
     $ singularity instance.stop インスタンス名
     $ bash start_container.sh
-    $ singularity shell instance://インスタンス名
-    > mysql_secure_installation
-    > exit
+    $ singularity exec instance://インスタンス名 mysql_secure_installation
 
 rootユーザーのパスワードの設定等を行います。
 "Enter current password for root (enter for none): "　では何も入力せずにEnterを押し、以降の質問には Y を入力すればよいです。
@@ -56,12 +54,11 @@ rootユーザーのパスワードの設定等を行います。
 
 ### データベース・ユーザーの作成
 
-例えばat043でsingularity instanceを起動した場合
+アクセス元のホストをワイルドカード（%）で設定しておきます。
 
     $ singularity exec instance://インスタンス名 mysql -uroot -p
     mysql> grant all privileges on new_database.* to 'new_user'@'%' identified by 'new_password';
     mysql> exit
-    > exit
 
 ### singularitry instance内のMySQLデータベースへのアクセス
 
@@ -71,7 +68,7 @@ rootユーザーのパスワードの設定等を行います。
     Enter password: 
     ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)
 
-socketがないのでlocalhostではアクセスできない。-hオプションでsingularity instanceを起動したホスト名を指定する。
+socketがないのでlocalhostではアクセスできません。-hオプションでsingularity instanceを起動したホスト名を指定します。例えばat043でsingularity instanceを起動した場合は以下のようになります。
 
     $ mysql -h at043 -P <指定したポート番号> -u new_user -p
     Enter password:
@@ -83,4 +80,20 @@ socketがないのでlocalhostではアクセスできない。-hオプション
     
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
     
-    MySQL [(none)]>
+    MySQL [(none)]> exit
+
+別ホストからもアクセスできます。
+
+    $ ssh at044
+    $ mysql -h at043 -P <指定したポート番号> -u new_user -p
+    Enter password:
+    Welcome to the MariaDB monitor.  Commands end with ; or \g.
+    Your MySQL connection id is 14
+    Server version: 5.6.46 Source distribution
+    
+    Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+    
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+    
+    MySQL [(none)]> exit
+    
