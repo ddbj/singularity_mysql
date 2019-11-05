@@ -11,7 +11,7 @@ fi
 singularity instance.start \
 -B ${CONTAINER_HOME}/mysql_data:/usr/local/mysql/data \
 -B ${CONTAINER_HOME}/my_mysql.cnf:/usr/local/mysql/my_mysql.cnf \
-${IMAGE} \
+${CONTAINER_HOME}/${IMAGE} \
 ${INSTANCE}
 
 singularity exec instance://${INSTANCE} ${CONTAINER_HOME}/start_mysqld.sh
