@@ -32,6 +32,7 @@ singularity instanceを起動し、データベースの初期化・mysqlのroot
 
 ### singularitry instanceの起動・データベースの初期化
 
+    $ module load singularity/2.6.1
     $ bash start_container.sh
     $ singularity shell instance://インスタンス名
     > cd /usr/local/mysql
