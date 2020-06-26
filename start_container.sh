@@ -10,7 +10,7 @@ fi
 
 singularity instance.start \
 -B ${CONTAINER_HOME}/mysql_data:/usr/local/mysql/data \
--B ${CONTAINER_HOME}/my_mysql.cnf:/usr/local/mysql/my_mysql.cnf \
+-B ${CONTAINER_HOME}/my_mysql.cnf:/usr/local/mysql/mysql.cnf \
 ${CONTAINER_HOME}/${IMAGE} \
 ${INSTANCE}
 
