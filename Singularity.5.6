@@ -29,7 +29,8 @@ From: ubuntu:18.04
     cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql \
     -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/boost -DDEFAULT_CHARSET=utf8 \
     -DDEFAULT_COLLATION=utf8_general_ci \
-    -DWITH_INNOBASE_STORAGE_ENGINE=1
+    -DWITH_INNOBASE_STORAGE_ENGINE=1 \
+    -DMYSQL_UNIX_ADDR=/usr/local/mysql/data/mysql.sock
     make -j 4 && make install
 
     # install perl modules for mysql_install_db script
