@@ -1,6 +1,6 @@
 [client]
 port = 52004
-socket = /usr/local/mysql/data/my_mysql.sock
+socket = /usr/local/mysql/data/mysql.sock
 
 [mysql]
 default-character-set = utf8
@@ -9,8 +9,8 @@ default-character-set = utf8
 port = 52004
 bind-address = 0.0.0.0
 #skip-networking
-pid-file = /usr/local/mysql/data/my_mysql.pid
-socket = /usr/local/mysql/data/my_mysql.sock
+pid-file = /usr/local/mysql/data/mysql.pid
+socket = /usr/local/mysql/data/mysql.sock
 datadir = /usr/local/mysql/data/
 skip-character-set-client-handshake
 character-set-server = utf8
