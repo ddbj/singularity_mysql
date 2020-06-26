@@ -69,9 +69,9 @@ rootユーザーのパスワードの設定等を行います。
     Enter password: 
     ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)
 
-socketがないのでlocalhostではアクセスできません。-hオプションでsingularity instanceを起動したホスト名を指定します。例えばat043でsingularity instanceを起動した場合は以下のようになります。
+socketがないのでlocalhostではアクセスできません。-hオプションでsingularity instanceを起動したホスト名を指定します。例えばat111でsingularity instanceを起動した場合は以下のようになります。
 
-    $ mysql -h at043 -P <指定したポート番号> -u new_user -p
+    $ mysql -h at111 -P <指定したポート番号> -u new_user -p
     Enter password:
     Welcome to the MariaDB monitor.  Commands end with ; or \g.
     Your MySQL connection id is 18
@@ -88,7 +88,7 @@ socketがないのでlocalhostではアクセスできません。-hオプショ
 
     $ ssh at044
     Last login: Fri Nov  1 15:57:04 2019 from gw1
-    $ mysql -h at043 -P <指定したポート番号> -u new_user -p
+    $ mysql -h at111 -P <指定したポート番号> -u new_user -p
     Enter password:
     Welcome to the MariaDB monitor.  Commands end with ; or \g.
     Your MySQL connection id is 14
