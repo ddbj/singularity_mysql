@@ -54,6 +54,12 @@ rootユーザーのパスワードの設定等を行います。
 
 ## MySQLデータベースの使用
 
+### データベースの作成
+
+    $ singularity exec instance://インスタンス名 mysql -uroot -p
+    mysql> create database new_database;
+    mysql> exit
+
 ### データベース・ユーザーの作成
 
 アクセス元のホストをワイルドカード（%）で設定しておきます。
