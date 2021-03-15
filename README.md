@@ -45,7 +45,9 @@ singularity instanceを起動し、データベースの初期化・mysqlのroot
 
     $ singularity instance stop インスタンス名
     $ bash start_container.sh
+    $ singularity exec instance://インスタンス名 ln -s /usr/local/mysql/data/mysql.sock /tmp/mysql.sock
     $ singularity exec instance://インスタンス名 mysql_secure_installation
+    $ singularity exec instnace://インスタンス名 rm /tmp/mysql.sock
 
 rootユーザーのパスワードの設定等を行います。
 "Enter current password for root (enter for none): "　では何も入力せずにEnterを押し、以降の質問には Y を入力すればよいです。
