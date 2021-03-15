@@ -8,7 +8,7 @@ if [ ! -e ${CONTAINER_HOME}/mysql_data ]; then
     mkdir ${CONTAINER_HOME}/mysql_data
 fi
 
-singularity instance.start \
+singularity instance start \
 -B ${CONTAINER_HOME}/mysql_data:/usr/local/mysql/data \
 -B ${CONTAINER_HOME}/my_mysql.cnf:/etc/my.cnf \
 -H ${CONTAINER_HOME}/mysql_data \
