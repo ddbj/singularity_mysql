@@ -25,14 +25,13 @@ Singularity Hubに登録されたイメージをダウンロードする場合�
 singularity instanceを起動し、データベースの初期化・mysqlのrootユーザーの設定等を行います。
 コマンド実行前に、自分の環境に合わせて start_container.sh の CONTAINER_HOME, IMAGE, INSTANCE変数と　my_mysql.cnf の port（2か所）を修正してください。
 
-- CONTAINER_HOME: 本リポジトリをgit cloneしてできたディレクトリのフルパスを記載します。
 - IMAGE: singularity buildまたはsingularity pullした際に指定したイメージのファイル名を記載します。
 - INSTANCE: 起動するsingularity instanceの名前を記載します。すでに実行されているinstanceの名前では新規にinstanceを起動できないので、適宜修正してください。
 - port: mysqlが使用するポートを記載してください。デフォルトのポート番号は3306ですが、他と被らないように50000以上の任意の数値を指定してください。
 
 ### singularitry instanceの起動・データベースの初期化
 
-    $ module load singularity/2.6.1
+    $ module load singularity
     $ bash start_container.sh
     $ singularity shell instance://インスタンス名
     > cd /usr/local/mysql
@@ -44,7 +43,7 @@ singularity instanceを起動し、データベースの初期化・mysqlのroot
 
 ### singularitry instanceの再起動・mysqlのrootユーザーのパスワード設定等
 
-    $ singularity instance.stop インスタンス名
+    $ singularity instance stop インスタンス名
     $ bash start_container.sh
     $ singularity exec instance://インスタンス名 mysql_secure_installation
 
